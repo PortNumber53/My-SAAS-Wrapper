@@ -12,6 +12,7 @@
 		"cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
 	},
 	"dependencies": {
+		"@xata.io/client": "^0.0.0-next.v93343b9646f57a1e5c51c35eccf0767c2bb80baa",
 		"next": "15.2.5",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
