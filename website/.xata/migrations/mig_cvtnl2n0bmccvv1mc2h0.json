@@ -1,0 +1,24 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cvtnl2n0bmccvv1mc2h0",
+    "operations": [
+      {
+        "add_column": {
+          "table": "nextauth_accounts",
+          "column": {
+            "name": "provider",
+            "type": "text",
+            "comment": "",
+            "nullable": true
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cvtnl2n0bmccvv1mc2h0",
+  "parent": "mig_cvtnl0sdh05jf8a5kd80",
+  "schema": "public",
+  "startedAt": "2025-04-13T08:49:15.332699Z"
+}

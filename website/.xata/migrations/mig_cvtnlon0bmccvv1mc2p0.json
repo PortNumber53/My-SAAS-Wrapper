@@ -1,0 +1,24 @@
+{
+  "done": true,
+  "migration": {
+    "name": "mig_cvtnlon0bmccvv1mc2p0",
+    "operations": [
+      {
+        "add_column": {
+          "table": "nextauth_verificationTokens",
+          "column": {
+            "name": "token",
+            "type": "text",
+            "comment": "",
+            "nullable": true
+          }
+        }
+      }
+    ]
+  },
+  "migrationType": "pgroll",
+  "name": "mig_cvtnlon0bmccvv1mc2p0",
+  "parent": "mig_cvtnln70bmccvv1mc2o0",
+  "schema": "public",
+  "startedAt": "2025-04-13T08:50:43.727236Z"
+}
