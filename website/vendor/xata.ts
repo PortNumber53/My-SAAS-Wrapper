@@ -296,6 +296,22 @@ const tables = [
         comment: "",
       },
       {
+        name: "password",
+        type: "text",
+        notNull: false,
+        unique: false,
+        defaultValue: null,
+        comment: "",
+      },
+      {
+        name: "profile",
+        type: "text",
+        notNull: true,
+        unique: false,
+        defaultValue: "'user'::text",
+        comment: "",
+      },
+      {
         name: "xata_createdat",
         type: "datetime",
         notNull: true,
