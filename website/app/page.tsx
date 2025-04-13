@@ -3,7 +3,15 @@ import xata from '@/lib/xata';
 import type { NextauthUsersRecord } from '@/vendor/xata';
 
 export default async function Home() {
-  const users = await xata.db.nextauth_users.getMany();
+  let users: NextauthUsersRecord[] = [];
+
+  try {
+    users = await xata.db.nextauth_users.getMany();
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
+    // Handle the error, e.g., display an error message to the user
+    return <div>Error loading users.</div>;
+  }
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -16,7 +24,7 @@ export default async function Home() {
           height={38}
           priority
         />
-        
+
         {/* User List Section */}
         <div className="w-full max-w-md">
           <h2 className="text-xl font-bold mb-4">Users</h2>
