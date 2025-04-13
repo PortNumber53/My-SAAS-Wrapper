@@ -1,6 +1,10 @@
 import Image from "next/image";
+import xata from '@/lib/xata';
+import type { NextauthUsersRecord } from '@/vendor/xata';
 
-export default function Home() {
+export default async function Home() {
+  const users = await xata.db.nextauth_users.getMany();
+
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -12,9 +16,36 @@ export default function Home() {
           height={38}
           priority
         />
+        
+        {/* User List Section */}
+        <div className="w-full max-w-md">
+          <h2 className="text-xl font-bold mb-4">Users</h2>
+          <div className="space-y-2">
+            {users.map((user: NextauthUsersRecord) => (
+              <div key={user.xata_id} className="p-3 border rounded-lg">
+                <div className="flex items-center gap-3">
+                  {user.image && (
+                    <Image
+                      src={user.image}
+                      alt={user.name || 'User'}
+                      width={32}
+                      height={32}
+                      className="rounded-full"
+                    />
+                  )}
+                  <div>
+                    <p className="font-medium">{user.name || 'No name'}</p>
+                    <p className="text-sm text-gray-500">{user.email}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
+            Get started by editing{' '}
             <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
               app/page.tsx
             </code>
